@@ -1,13 +1,60 @@
 body {
-  margin: 0;
-  padding: 0;
+  background-image: url("img/scene.png");
+  background-size: cover;
+  z-index:0.8;
 }
 
-#background-img{
-  position: absolute;
-  top: 0;
-  left: 0;
+/* create a container for the images */
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* style the images */
+.image-container img {
+  width: 20%;
+  margin-left: 10vw;
+  margin: 10px;
+  opacity: 0.8;
+}
+
+ /* style the spotlight image */
+ 
+#spotlight {
+   position: absolute;
+    top: 0;
+    left: 0;
+    width: 35%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+    transition: all 1s;
+}
+
+audio {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: transparent;
+  color: white;
+  padding: 10px;
+  height: 7vh;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+audio::-webkit-media-controls-panel {
+  background-color: #eb4034;
+  height: 7vh;
+  color: white;
+  padding: 10px;
+  box-sizing: border-box;
+}
+audio::-webkit-media-controls-play-button {
+  display: none;
+}
+audio::-webkit-media-controls-start-playback-button {
+  display: none;
 }
