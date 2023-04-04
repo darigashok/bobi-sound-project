@@ -10,6 +10,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  z-index: 1;
 }
 
 /* style the images */
@@ -18,15 +19,6 @@ body {
   margin-left: 10vw;
   margin: 10px;
   opacity: 0.8;
-}
-
-.piano {
-  transition: transform 0.3s ease-in-out;
-}
-
-.piano:hover{
-  transform: scale(1.1);
-  animation: wiggle 0.3s ease-in-out alternate;
 }
 
 @keyframes wiggle {
@@ -38,8 +30,7 @@ body {
   }
 }
 
-
-.drums {
+.animation {
   transition: transform 0.3s ease-in-out;
 }
 
@@ -79,7 +70,7 @@ body {
   }
 }
 
-.drums:hover{
+.animation:hover{
   animation: shake 0.8s ease-in-out infinite;
 }
 
@@ -113,7 +104,7 @@ body {
     left: 0;
     width: 35%;
     height: 100%;
-    z-index: 1;
+    z-index: 0.9;
     opacity: 0;
     transition: all 1s;
   pointer-events: none;
@@ -144,3 +135,42 @@ audio::-webkit-media-controls-play-button {
 audio::-webkit-media-controls-start-playback-button {
   display: none;
 }
+
+.message {
+  display: none;
+}
+
+/* styles for screens with a maximum width of 767px (e.g. smartphones in portrait orientation) */
+@media (max-width: 767px) {
+  body{
+    background-size: contain;
+    /*background-size: auto;*/
+    background-repeat: no-repeat;
+  }
+  .message {
+    display: block;
+  }
+  
+  .image-container {
+    flex-wrap: wrap;
+  }
+  
+  .image-container img {
+    width: 20%;
+    margin: 5px;
+  }
+}
+
+/* styles for screens with a minimum width of 768px (e.g. tablets and desktops) */
+@media (min-width: 768px) {
+  .message {
+    display: none;
+  }
+  
+  .image-container img {
+    width: 20%;
+    margin-left: 10vw;
+    margin: 10px;
+  }
+}
+
