@@ -20,6 +20,91 @@ body {
   opacity: 0.8;
 }
 
+.piano {
+  transition: transform 0.3s ease-in-out;
+}
+
+.piano:hover{
+  transform: scale(1.1);
+  animation: wiggle 0.3s ease-in-out alternate;
+}
+
+@keyframes wiggle {
+  from {
+    transform: rotate(-5deg);
+  }
+  to {
+    transform: rotate(5deg);
+  }
+}
+
+
+.drums {
+  transition: transform 0.3s ease-in-out;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateY(0);
+  }
+  10% {
+    transform: translateY(-5px) rotate(-5deg);
+  }
+  20% {
+    transform: translateY(5px) rotate(5deg);
+  }
+  30% {
+    transform: translateY(-3px) rotate(-3deg);
+  }
+  40% {
+    transform: translateY(3px) rotate(3deg);
+  }
+  50% {
+    transform: translateY(-2px) rotate(-2deg);
+  }
+  60% {
+    transform: translateY(2px) rotate(2deg);
+  }
+  70% {
+    transform: translateY(-1px) rotate(-1deg);
+  }
+  80% {
+    transform: translateY(1px) rotate(1deg);
+  }
+  90% {
+    transform: translateY(-0.5px) rotate(-0.5deg);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.drums:hover{
+  animation: shake 0.8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.guitar {
+  transition: transform 0.3s ease-in-out;
+  /*pointer-events: none;*/
+}
+
+.guitar:hover{
+  animation: pulse 1s ease-in-out infinite;
+ /* pointer-events: auto;*/
+}
+
  /* style the spotlight image */
  
 #spotlight {
@@ -31,6 +116,7 @@ body {
     z-index: 1;
     opacity: 0;
     transition: all 1s;
+  pointer-events: none;
 }
 
 audio {
