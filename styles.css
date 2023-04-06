@@ -2,21 +2,7 @@
 body {
   background-image: url('img/scene.png');
   background-size: cover;
-}
-
-/* Media query for screens smaller than 768px */
-@media (max-width: 767px) {
-  body {
-    background-image: url('img/scene_mobile.png');
-    background-size: cover;
-  }
-  .image-container {
-    display: flex; /* Use flexbox to stack the images */
-    flex-flow: column wrap; /* Stack the images vertically */
-  }
-  .animation {
-    margin-bottom: 20px; /* Add some space between the images */
-  }
+  background-repeat: no-repeat;
 }
 
   /* create a container for the images */
@@ -38,6 +24,33 @@ body {
 
 .animation {
   transition: transform 0.3s ease-in-out;
+}
+
+/* Media query for screens smaller than 768px */
+@media (max-width: 1200px) {
+  body {
+    background-image: url('img/scene_mobile.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+
+@media (max-width: 767px)
+{
+  .image-container {
+    display: flex; /* Use flexbox to stack the images */
+    flex-flow: column wrap; /* Stack the images vertically */
+  }
+  .animation {
+    margin-bottom: 20px; /* Add some space between the images */
+  }
+    /* style the images */
+    .image-container img {
+      height: 20%;
+      margin-top: 10vw;
+      margin: 10px;
+      opacity: 0.8;
+    }
 }
 
 @keyframes shake {
@@ -85,7 +98,7 @@ audio {
   font-size: 14px;
 }
 audio::-webkit-media-controls-panel {
-  background-color: #eb4034;
+  background-color: transparent;
   height: 7vh;
   color: white;
   padding: 10px;
