@@ -1,99 +1,61 @@
+/* Default background image */
 body {
-  background-image: url("img/scene.png");
+  background-image: url('img/scene.png');
   background-size: cover;
-  z-index:0.8;
 }
 
-/* create a container for the images */
-.image-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  z-index: 1;
-}
-
-/* style the images */
-.image-container img {
-  width: 20%;
-  margin-left: 10vw;
-  margin: 10px;
-  opacity: 0.8;
-}
-
-@keyframes wiggle {
-  from {
-    transform: rotate(-5deg);
+/* Media query for screens smaller than 768px */
+@media (max-width: 767px) {
+  body {
+    background-image: url('img/scene_mobile.png');
+    background-size: cover;
   }
-  to {
-    transform: rotate(5deg);
+  .image-container {
+    display: flex; /* Use flexbox to stack the images */
+    flex-flow: column wrap; /* Stack the images vertically */
+  }
+  .animation {
+    margin-bottom: 20px; /* Add some space between the images */
   }
 }
+
+  /* create a container for the images */
+  .image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    z-index: 1;
+  }
+
+  /* style the images */
+  .image-container img {
+    width: 20%;
+    margin-left: 10vw;
+    margin: 10px;
+    opacity: 0.8;
+  }
 
 .animation {
   transition: transform 0.3s ease-in-out;
 }
 
 @keyframes shake {
-  0% {
-    transform: translateY(0);
-  }
-  10% {
-    transform: translateY(-5px) rotate(-5deg);
-  }
-  20% {
-    transform: translateY(5px) rotate(5deg);
-  }
-  30% {
-    transform: translateY(-3px) rotate(-3deg);
-  }
-  40% {
-    transform: translateY(3px) rotate(3deg);
-  }
-  50% {
-    transform: translateY(-2px) rotate(-2deg);
-  }
-  60% {
-    transform: translateY(2px) rotate(2deg);
-  }
-  70% {
-    transform: translateY(-1px) rotate(-1deg);
-  }
-  80% {
-    transform: translateY(1px) rotate(1deg);
-  }
-  90% {
-    transform: translateY(-0.5px) rotate(-0.5deg);
-  }
-  100% {
-    transform: translateY(0);
-  }
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 
 .animation:hover{
   animation: shake 0.8s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-.guitar {
-  transition: transform 0.3s ease-in-out;
-  /*pointer-events: none;*/
-}
-
-.guitar:hover{
-  animation: pulse 1s ease-in-out infinite;
- /* pointer-events: auto;*/
 }
 
  /* style the spotlight image */
@@ -129,48 +91,3 @@ audio::-webkit-media-controls-panel {
   padding: 10px;
   box-sizing: border-box;
 }
-audio::-webkit-media-controls-play-button {
-  display: none;
-}
-audio::-webkit-media-controls-start-playback-button {
-  display: none;
-}
-
-.message {
-  display: none;
-}
-
-/* styles for screens with a maximum width of 767px (e.g. smartphones in portrait orientation) */
-@media (max-width: 767px) {
-  body{
-    background-size: contain;
-    /*background-size: auto;*/
-    background-repeat: no-repeat;
-  }
-  .message {
-    display: block;
-  }
-  
-  .image-container {
-    flex-wrap: wrap;
-  }
-  
-  .image-container img {
-    width: 20%;
-    margin: 5px;
-  }
-}
-
-/* styles for screens with a minimum width of 768px (e.g. tablets and desktops) */
-@media (min-width: 768px) {
-  .message {
-    display: none;
-  }
-  
-  .image-container img {
-    width: 20%;
-    margin-left: 10vw;
-    margin: 10px;
-  }
-}
-
