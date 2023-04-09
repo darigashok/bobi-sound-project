@@ -1,5 +1,5 @@
 const showmanAppearTime = 3000; // time in milliseconds for showman to appear
-const showmanDisappearTime = 17000; // time in milliseconds for showman to disappear
+const showmanDisappearTime = 30000; // time in milliseconds for showman to disappear
 const showmanTime = showmanDisappearTime - showmanAppearTime; // time in milliseconds for showman to stay on the scene
 const imageTimes = [17000, 19000, 21000]; // array of time intervals for switching between images
 
@@ -117,19 +117,29 @@ setInterval(function() {
     console.log("GUITAR THING");
     spotlight(2);
   }
+
+  if (currentTime*1000 >= showmanAppearTime && currentTime*1000 <= showmanDisappearTime) {
+    showman.style.display = "block";
+  }
+  //else make it disappear
+  else{
+    showman.style.display = "none";
+
+  }
   //guy
 
   
 }, 50);
 
 
-showman.style.display = "none";
-setTimeout(function() {
-  showman.style.display = "block";
-}, showmanAppearTime);
 
-var showmanInterval = setInterval(function() {
-  showman.style.display = "none";
-  clearInterval(showmanInterval);
-  imageContainer.style.opacity = "1";
-}, showmanDisappearTime);
+// showman.style.display = "none";
+// setTimeout(function() {
+//   showman.style.display = "block";
+// }, showmanAppearTime);
+
+// var showmanInterval = setInterval(function() {
+//   showman.style.display = "none";
+//   clearInterval(showmanInterval);
+//   imageContainer.style.opacity = "1";
+// }, showmanDisappearTime);
