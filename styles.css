@@ -7,11 +7,12 @@ body {
 
   /* create a container for the images */
   .image-container {
-    display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     z-index: 1;
+    display: flex;
+    opacity: 0;
   }
 
   /* style the images */
@@ -26,10 +27,29 @@ body {
   transition: transform 0.3s ease-in-out;
 }
 
+#showman img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: auto;
+  width: 30%;
+  transform: translate(-50%, -50%);
+  margin-bottom: 10vh;
+}
+
+#spotlight2{
+  display: none;
+}
+
+#spotlight1 {
+  display: block;
+}
+
+
 /* Media query for screens smaller than 768px */
 @media (max-width: 1200px) {
   body {
-    background-image: url('img/scene_mobile.png');
+    background-image: url('img/scene_tablet.png');
     background-size: cover;
     background-repeat: no-repeat;
   }
@@ -37,9 +57,15 @@ body {
 
 @media (max-width: 767px)
 {
+  body {
+    background-image: url('img/scene_mobile.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
   .image-container {
     display: flex; /* Use flexbox to stack the images */
     flex-flow: column wrap; /* Stack the images vertically */
+    width: 100vw;
   }
   .animation {
     margin-bottom: 20px; /* Add some space between the images */
@@ -47,10 +73,19 @@ body {
     /* style the images */
     .image-container img {
       height: 20%;
+      width: auto;
       margin-top: 10vw;
       margin: 10px;
       opacity: 0.8;
     }
+
+    #spotlight1{
+       display: none;
+    }
+    #spotlight2{
+      display: block;
+    }
+
 }
 
 @keyframes shake {
@@ -73,7 +108,7 @@ body {
 
  /* style the spotlight image */
  
-#spotlight {
+#spotlight1 {
    position: absolute;
     top: 0;
     left: 0;
@@ -85,13 +120,25 @@ body {
   pointer-events: none;
 }
 
+#spotlight2 {
+  position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 25%;
+   z-index: 0.9;
+   opacity: 0;
+   transition: all 1s;
+ pointer-events: none;
+}
+
 audio {
   width: 100%;
   position: fixed;
   bottom: 0;
   left: 0;
   background-color: transparent;
-  color: white;
+  color: transparent;
   padding: 10px;
   height: 7vh;
   box-sizing: border-box;
@@ -100,7 +147,7 @@ audio {
 audio::-webkit-media-controls-panel {
   background-color: transparent;
   height: 7vh;
-  color: white;
+  color: transparent;
   padding: 10px;
   box-sizing: border-box;
 }

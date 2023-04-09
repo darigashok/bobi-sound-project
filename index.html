@@ -7,14 +7,16 @@
   </head>
   <body>
     <audio controls autoplay>
-      <source src="sounds/test.mp3" type="audio/mpeg">
+      <source src="sounds/sound.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
     </audio>
-    <img id="spotlight" src="img/spotlight.png" alt="Spotlight">
-    <div class="image-container">
-      <img src="img/piano.png" alt="Image 1" class = "animation">
-      <img src="img/drum.png" alt="Image 2" class = "animation">
-      <img src="img/guitar.png" alt="Image 3" class = "animation">
+    <div id="showman" class = "showman-container"><img src="img/showman.png"></div>
+    <img id="spotlight1" class="spotlight" src="img/spotlight.png" alt="Spotlight"/>
+    <img id="spotlight2" class="spotlight" src="img/spotlight_mobile.png" alt="Spotlight"/>
+    <div id = "image-container" class="image-container">
+      <img src="img/piano.png" id="piano" alt="Piano" class = "animation">
+      <img src="img/drum.png" id="drums" alt="Drums" class = "animation">
+      <img src="img/guitar.png" id="guitar" alt="Guitar" class = "animation">
     </div>
     <script src="script.js"></script>
   </body>
