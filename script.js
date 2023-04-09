@@ -75,7 +75,6 @@ audio.addEventListener('loadedmetadata', function() {
   }, 1000);
 });
 
-
 //use currentTime for timestamps
 setInterval(function() {
   console.log("EGG ", currentTime);
@@ -86,7 +85,8 @@ setInterval(function() {
 //use currentTime for timestamps
 setInterval(function() {
   //piano timestamps
-  if ((currentTime>31 && currentTime<36) ||
+  if ((currentTime>17 && currentTime<18) ||
+      (currentTime>31 && currentTime<36) ||
       (currentTime>46 && currentTime<51) ||
       (currentTime>58 && currentTime<61)||
       (currentTime>72 && currentTime<88) ||
@@ -96,28 +96,31 @@ setInterval(function() {
     spotlight(0);
   }
   //drums timestamps
-  if ((currentTime>37 && currentTime<40) ||
+  if ((currentTime>18 && currentTime<19) ||
+      (currentTime>37 && currentTime<40) ||
       (currentTime>51 && currentTime<54) ||
       (currentTime>61 && currentTime<63) ||
       (currentTime>89 && currentTime<102)||
-      (currentTime>121 && currentTime<131)) {
+      (currentTime>121 && currentTime<131) ||
+      (currentTime>136 && currentTime<187)) {
     console.log("DRUMS THING");
     spotlight(1);
   }
   //guitar timestamps
-  if ((currentTime>37 && currentTime<40) ||
-      (currentTime>51 && currentTime<54) ||
-      (currentTime>61 && currentTime<63) ||
-      (currentTime>89 && currentTime<102)||
-      (currentTime>121 && currentTime<131)) {
+  if ((currentTime>19 && currentTime<20) ||
+      (currentTime>41 && currentTime<46) ||
+      (currentTime>54 && currentTime<57) ||
+      (currentTime>63 && currentTime<65) ||
+      (currentTime>103 && currentTime<117)||
+      (currentTime>121 && currentTime<131)||
+      (currentTime>136 && currentTime<187)) {
     console.log("GUITAR THING");
     spotlight(2);
   }
   //guy
-  
-  
-}, 100);
 
+  
+}, 50);
 
 
 showman.style.display = "none";
