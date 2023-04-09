@@ -4,6 +4,7 @@ const showmanTime = showmanDisappearTime - showmanAppearTime; // time in millise
 const imageTimes = [17000, 19000, 21000]; // array of time intervals for switching between images
 
 /*
+
 26 - 31 - audience applause
 31 - 36 - piano intro
 37 - 40 - drums intro 
@@ -25,13 +26,32 @@ const imageTimes = [17000, 19000, 21000]; // array of time intervals for switchi
 188-197 - audience applause
 198 - 215 - host talk
 */
+
 const imagePiano = document.getElementById('piano');
 const imageDrums = document.getElementById('drums');
 const imageGuitar = document.getElementById('guitar');
 
 const showman = document.getElementById('showman');
 const imageContainer = document.getElementById('image-container');
-const audio = document.getElementById('audio');
+
+// get the audio element
+const audio = document.getElementById('audio-player');
+let currentTime = audio.currentTime;
+
+//gets the timestamp every second
+audio.addEventListener('loadedmetadata', function() {
+  audio.play();
+  setInterval(function() {
+    currentTime = audio.currentTime;
+    console.log(currentTime);
+  }, 1000);
+});
+
+//use currentTime for timestamps
+setInterval(function() {
+  console.log("EGG ", currentTime);
+}, 1000);
+
 
 showman.style.display = "none";
 setTimeout(function() {
@@ -63,7 +83,7 @@ var showmanInterval = setInterval(function() {
       currentImage += 1;
   
       // wrap around to the first image when we reach the end
-      if (currentImage >= images.length) {
+      if (currentImage >= 3) {
         currentSpotlightPosition = 0;
         currentImage = 0;
       }
@@ -84,3 +104,4 @@ var showmanInterval = setInterval(function() {
   // call the setupSpotlight function for the vertical spotlight
   setupSpotlight("spotlight2", [18,39,61]); 
   
+
