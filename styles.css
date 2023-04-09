@@ -45,6 +45,25 @@ body {
   display: block;
 }
 
+.animation:hover{
+  animation: shake 1.2s ease-in-out infinite; /*0.8s*/
+}
+
+.animation:active {
+  animation-name: jump;
+  animation-duration: 1.2s;
+  animation-timing-function: ease-out;
+  transform: translateY(-2vh);
+}
+
+@keyframes jump {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-10vh);
+  }
+}
 
 /* Media query for screens smaller than 768px */
 @media (max-width: 1200px) {
@@ -100,10 +119,6 @@ body {
   80% { transform: translate(-1px, -1px) rotate(1deg); }
   90% { transform: translate(1px, 2px) rotate(0deg); }
   100% { transform: translate(1px, -2px) rotate(-1deg); }
-}
-
-.animation:hover{
-  animation: shake 0.8s ease-in-out infinite;
 }
 
  /* style the spotlight image */
