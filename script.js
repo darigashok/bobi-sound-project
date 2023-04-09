@@ -1,5 +1,6 @@
+const random = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 const showmanAppearTime = 3000; // time in milliseconds for showman to appear
-const showmanDisappearTime = 30000; // time in milliseconds for showman to disappear
+const showmanDisappearTime = 17000; // time in milliseconds for showman to disappear
 const showmanTime = showmanDisappearTime - showmanAppearTime; // time in milliseconds for showman to stay on the scene
 const imageTimes = [17000, 19000, 21000]; // array of time intervals for switching between images
 
@@ -28,6 +29,10 @@ const imageTimes = [17000, 19000, 21000]; // array of time intervals for switchi
 */
 
 function spotlight(instrumentID) {
+
+    showman.style.display = "none";
+    imageContainer.style.opacity = "1";
+
   setupSpotlight("spotlight1", instrumentID);
 
   // call the setupSpotlight function for the vertical spotlight
@@ -85,6 +90,19 @@ setInterval(function() {
 //use currentTime for timestamps
 setInterval(function() {
   //piano timestamps
+  if(currentTime<=5)
+    imageContainer.style.opacity = "0";
+    showman.style.display = "none";
+  if(currentTime>5 && currentTime<16){
+    imageContainer.style.opacity = "0";
+    showman.style.display = "block";
+  }
+  if(currentTime>16 && currentTime<17)
+  {
+    showman.style.display = "none";
+    imageContainer.style.opacity = "1";
+  }
+
   if ((currentTime>17 && currentTime<18) ||
       (currentTime>31 && currentTime<36) ||
       (currentTime>46 && currentTime<51) ||
@@ -118,18 +136,19 @@ setInterval(function() {
     spotlight(2);
   }
 
-  if (currentTime*1000 >= showmanAppearTime && currentTime*1000 <= showmanDisappearTime) {
+  //showman timestamps
+  if (currentTime>197){
+    imageContainer.style.opacity = "0";
+    imageContainer.style.display="none"
     showman.style.display = "block";
-  }
-  //else make it disappear
-  else{
-    showman.style.display = "none";
-
+    spotlight.style.opacity = "0";
+    spotlight.style.display="none"
+  
   }
   //guy
 
   
-}, 50);
+}, 10);
 
 
 
@@ -140,6 +159,5 @@ setInterval(function() {
 
 // var showmanInterval = setInterval(function() {
 //   showman.style.display = "none";
-//   clearInterval(showmanInterval);
-//   imageContainer.style.opacity = "1";
+//   
 // }, showmanDisappearTime);
