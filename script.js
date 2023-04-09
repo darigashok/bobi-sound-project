@@ -27,6 +27,34 @@ const imageTimes = [17000, 19000, 21000]; // array of time intervals for switchi
 198 - 215 - host talk
 */
 
+function spotlight(instrumentID) {
+  setupSpotlight("spotlight1", instrumentID);
+
+  // call the setupSpotlight function for the vertical spotlight
+  setupSpotlight("spotlight2", instrumentID);
+}
+
+function setupSpotlight(spotlightId, instrumentID) {
+  let spotlight = document.getElementById(spotlightId); // define spotlight variable here
+
+  let spotlightPositions;
+  if (spotlightId === "spotlight1") {
+    spotlightPositions = [13, 34, 56];
+  } else {
+    spotlightPositions = [18, 39, 61];
+  }
+
+  spotlight.style.transform =
+    "translate" +
+    (spotlightId === "spotlight1" ? "X" : "Y") +
+    "(" +
+    spotlightPositions[instrumentID] +
+    (spotlightId === "spotlight1" ? "vw)" : "vh)");
+}
+
+
+
+
 const imagePiano = document.getElementById('piano');
 const imageDrums = document.getElementById('drums');
 const imageGuitar = document.getElementById('guitar');
@@ -43,14 +71,77 @@ audio.addEventListener('loadedmetadata', function() {
   audio.play();
   setInterval(function() {
     currentTime = audio.currentTime;
-    console.log(currentTime);
+    //console.log(currentTime);
   }, 1000);
 });
+
 
 //use currentTime for timestamps
 setInterval(function() {
   console.log("EGG ", currentTime);
 }, 1000);
+
+//use currentTime for timestamps
+setInterval(function() {
+  if (currentTime>31 && currentTime<36) {
+    console.log("PIANO THING");
+    console.log("PIANO THING");
+    console.log("PIANO THING");
+    spotlight(0);
+  }
+  if (currentTime>37 && currentTime<40) {
+    console.log("DRUMS THING");
+    console.log("DRUMS THING");
+    console.log("DRUMS THING");
+    spotlight(1);
+  }
+  
+  
+
+}, 100);
+
+
+
+
+
+
+
+
+// //function takes in spotlight type (vertical or horizontal) and instrument type (1, 2, 3)
+// let spotlight = [1, 2] //desktop, mobile
+// let instruments = [1, 2, 3] //piano, drums, guitar
+
+// function spotlight(light, instrument) {
+//   let lightImg;
+
+//   if (light==1) {
+
+//   } else {
+
+//   }
+
+//   if (instrument==1) {
+
+//   } else if (instrument==2) {
+
+//   } else {
+
+//   }
+
+//   spotlight.style.transform = "translate" + (spotlightId === "spotlight1" ? "X" : "Y") + "(" + spotlightPositions[currentSpotlightPosition] + (spotlightId === "spotlight1" ? "vw)" : "vh)");
+
+// }
+
+
+// //make the spotlight highlight the instrument that's talking based on audio timestamp
+// if (currentTime>31 && currentTime<36) {
+
+//   //put spotlight on piano
+//   spotlight("spotlight1", piano)
+
+// }
+
+
 
 
 showman.style.display = "none";
@@ -64,44 +155,69 @@ var showmanInterval = setInterval(function() {
   imageContainer.style.opacity = "1";
 }, showmanDisappearTime);
 
-  // SPOTLIGHT JS
-  function setupSpotlight(spotlightId, spotlightPositions) {
-    // get the spotlight element by id
-    var spotlight = document.getElementById(spotlightId);
+
+//  // call the setupSpotlight function for the horizontal spotlight - desktop
+//  setupSpotlight("spotlight1", [13, 34, 56]); //vw
+//  // call the setupSpotlight function for the vertical spotlight - mobile
+//  setupSpotlight("spotlight2", [18,39,61]); //vh
+
+
+//  // SPOTLIGHT JS
+//   function setupSpotlight(spotlightId, spotlightPositions) {
+//     // get the spotlight element by id
+//     var spotlight = document.getElementById(spotlightId);
+//     // define variables for the current spotlight position and image index
+//     var currentSpotlightPosition = 0;
+//     var currentImage = 0;
   
-    // define variables for the current spotlight position and image index
-    var currentSpotlightPosition = 0;
-    var currentImage = 0;
+//     // move the spotlight to the correct position over each image
+//     function moveSpotlight() {
+//       // move the spotlight to the correct position
+//       spotlight.style.transform = "translate" + (spotlightId === "spotlight1" ? "X" : "Y") + "(" + spotlightPositions[currentSpotlightPosition] + (spotlightId === "spotlight1" ? "vw)" : "vh)");
+//       // increment the current spotlight position and image index
+//       currentSpotlightPosition += 1;
+//       currentImage += 1;
+//     }
   
-    // move the spotlight to the correct position over each image
-    function moveSpotlight() {
-      // move the spotlight to the correct position
-      spotlight.style.transform = "translate" + (spotlightId === "spotlight1" ? "X" : "Y") + "(" + spotlightPositions[currentSpotlightPosition] + (spotlightId === "spotlight1" ? "vw)" : "vh)");
+//   }
+
+
+
+
+//   // // SPOTLIGHT JS
+//   // function setupSpotlight(spotlightId, spotlightPositions) {
+//   //   // get the spotlight element by id
+//   //   var spotlight = document.getElementById(spotlightId);
   
-      // increment the current spotlight position and image index
-      currentSpotlightPosition += 1;
-      currentImage += 1;
+//   //   // define variables for the current spotlight position and image index
+//   //   var currentSpotlightPosition = 0;
+//   //   var currentImage = 0;
   
-      // wrap around to the first image when we reach the end
-      if (currentImage >= 3) {
-        currentSpotlightPosition = 0;
-        currentImage = 0;
-      }
-    }
+//   //   // move the spotlight to the correct position over each image
+//   //   function moveSpotlight() {
+//   //     // move the spotlight to the correct position
+//   //     spotlight.style.transform = "translate" + (spotlightId === "spotlight1" ? "X" : "Y") + "(" + spotlightPositions[currentSpotlightPosition] + (spotlightId === "spotlight1" ? "vw)" : "vh)");
   
-    // call the moveSpotlight function every 5 seconds
-    setInterval(moveSpotlight, 5000);
+//   //     // increment the current spotlight position and image index
+//   //     currentSpotlightPosition += 1;
+//   //     currentImage += 1;
   
-    // show the spotlight image after 5 seconds
-    setTimeout(function() {
-      spotlight.style.opacity = "1";
-    }, 5000);
-  }
+//   //     // wrap around to the first image when we reach the end
+//   //     if (currentImage >= 3) {
+//   //       currentSpotlightPosition = 0;
+//   //       currentImage = 0;
+//   //     }
+//   //   }
   
-  // call the setupSpotlight function for the horizontal spotlight
-  setupSpotlight("spotlight1", [13, 34, 56]);
+//   //   // call the moveSpotlight function every 5 seconds
+//   //   setInterval(moveSpotlight, 5000);
   
-  // call the setupSpotlight function for the vertical spotlight
-  setupSpotlight("spotlight2", [18,39,61]); 
+//   //   // show the spotlight image after 5 seconds
+//   //   setTimeout(function() {
+//   //     spotlight.style.opacity = "1";
+//   //   }, 5000);
+//   // }
+  
+ 
   
 
