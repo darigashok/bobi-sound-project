@@ -69,26 +69,22 @@ const imageContainer = document.getElementById('image-container');
 //var for music_effect
 const music_effect = document.getElementById('music_effect');
 
-
 // get the audio element
 const audio = document.getElementById('audio-player');
 let currentTime = audio.currentTime;
 
-//gets the timestamp every second
 audio.addEventListener('loadedmetadata', function() {
   audio.play();
   setInterval(function() {
     currentTime = audio.currentTime;
-    //console.log(currentTime);
   }, 1000);
 });
 
-//use currentTime for timestamps
 setInterval(function() {
-  console.log("EGG ", currentTime);
-  currentTime = currentTime-1;
+  console.log("EGG", currentTime);
+  currentTime += 0.5;
+  //console.log(currentTime);
 }, 1000);
-
 
 //use currentTime for timestamps
 setInterval(function() {
@@ -100,10 +96,12 @@ setInterval(function() {
     imageContainer.style.opacity = "0";
     showman.style.display = "none";
   }
-  if(currentTime>5 && currentTime<16){
+
+  if(currentTime>5 && currentTime<16) {
     imageContainer.style.opacity = "0";
     showman.style.display = "block";
   }
+
   if(currentTime>16 && currentTime<17)
   {
     showman.style.display = "none";
@@ -114,8 +112,7 @@ setInterval(function() {
       (currentTime>31 && currentTime<36) ||
       (currentTime>46 && currentTime<51) ||
       (currentTime>58 && currentTime<61)||
-      (currentTime>72 && currentTime<88) ||
-      (currentTime>121 && currentTime<131)) {
+      (currentTime>72 && currentTime<88)) {
     console.log("PIANO THING");
     spotlight(0);
   }
@@ -124,8 +121,7 @@ setInterval(function() {
       (currentTime>37 && currentTime<40) ||
       (currentTime>51 && currentTime<54) ||
       (currentTime>61 && currentTime<63) ||
-      (currentTime>89 && currentTime<102)||
-      (currentTime>121 && currentTime<131)) {
+      (currentTime>89 && currentTime<102)) {
     console.log("DRUMS THING");
     spotlight(1);
   }
@@ -134,17 +130,13 @@ setInterval(function() {
       (currentTime>41 && currentTime<46) ||
       (currentTime>54 && currentTime<57) ||
       (currentTime>63 && currentTime<65) ||
-      (currentTime>103 && currentTime<117)||
-      (currentTime>121 && currentTime<131)) {
+      (currentTime>103 && currentTime<117)) {
     console.log("GUITAR THING");
     spotlight(2);
   }
 
-  if((currentTime>136 && currentTime<187)){
-   //get x to be a random value between 1 or 2 or 3 and then use that as a parameter for spotlight()
-    var x = random(0,2);
-    console.log("x is ", x);
-    spotlight(x);
+  //music effect 
+  if(currentTime>136 && currentTime<187){
     music_effect.style.opacity="0.5";
     //add the music_effect.png image with half opacity across the three instrument images
     music_effect.style.opacity = "0.5";
@@ -160,8 +152,6 @@ setInterval(function() {
     showman.style.display = "block";
   }
   //guy
-
-  
 }, 10);
 
 

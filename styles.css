@@ -134,7 +134,7 @@ body {
 }
 
  /* style the spotlight image */
- 
+
 #spotlight1 {
    position: absolute;
     top: 0;
@@ -177,4 +177,9 @@ audio::-webkit-media-controls-panel {
   color: transparent;
   padding: 10px;
   box-sizing: border-box;
+}
+
+
+.music-effect {
+  z-index: 0.9;
 }
