@@ -23,20 +23,42 @@ body {
     opacity: 0.8;
   }
 
-  /* style the music_effect image */
-  #music_effect {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0.9;
-    opacity: 0.5;
-    transition: all 1s;
-  }
-
 .animation {
   transition: transform 0.3s ease-in-out;
+}
+
+.animation:hover{
+  animation: shake 1.2s ease-in-out infinite; /*0.8s*/
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.animation:active {
+  animation-name: jump;
+  animation-duration: 1.2s;
+  animation-timing-function: ease-out;
+  transform: translateY(-2vh);
+}
+
+@keyframes jump {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-10vh);
+  }
 }
 
 #showman img{
@@ -55,26 +77,6 @@ body {
 
 #spotlight1 {
   display: block;
-}
-
-.animation:hover{
-  animation: shake 1.2s ease-in-out infinite; /*0.8s*/
-}
-
-.animation:active {
-  animation-name: jump;
-  animation-duration: 1.2s;
-  animation-timing-function: ease-out;
-  transform: translateY(-2vh);
-}
-
-@keyframes jump {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(-10vh);
-  }
 }
 
 /* Media query for screens smaller than 768px */
@@ -117,20 +119,6 @@ body {
       display: block;
     }
 
-}
-
-@keyframes shake {
-  0% { transform: translate(1px, 1px) rotate(0deg); }
-  10% { transform: translate(-1px, -2px) rotate(-1deg); }
-  20% { transform: translate(-3px, 0px) rotate(1deg); }
-  30% { transform: translate(3px, 2px) rotate(0deg); }
-  40% { transform: translate(1px, -1px) rotate(1deg); }
-  50% { transform: translate(-1px, 2px) rotate(-1deg); }
-  60% { transform: translate(-3px, 1px) rotate(0deg); }
-  70% { transform: translate(3px, 1px) rotate(-1deg); }
-  80% { transform: translate(-1px, -1px) rotate(1deg); }
-  90% { transform: translate(1px, 2px) rotate(0deg); }
-  100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 
  /* style the spotlight image */
@@ -177,9 +165,4 @@ audio::-webkit-media-controls-panel {
   color: transparent;
   padding: 10px;
   box-sizing: border-box;
-}
-
-
-.music-effect {
-  z-index: 0.9;
 }
