@@ -125,6 +125,8 @@ setInterval(function() {
       (currentTime > 128 && currentTime < 131)) {
     console.log("PIANO THING");
     spotlight(0);
+    showman.style.display = "none";
+    imageContainer.style.opacity = "1";
   }
   //drums timestamps
   if ((currentTime>18 && currentTime<19) ||
@@ -135,6 +137,8 @@ setInterval(function() {
       (currentTime > 123 && currentTime < 127)) {
     console.log("DRUMS THING");
     spotlight(1);
+    showman.style.display = "none";
+    imageContainer.style.opacity = "1";
   }
   //guitar timestamps
   if ((currentTime>19 && currentTime<20) ||
@@ -144,11 +148,15 @@ setInterval(function() {
       (currentTime>103 && currentTime<117)) {
     console.log("GUITAR THING");
     spotlight(2);
+    showman.style.display = "none";
+        imageContainer.style.opacity = "1";
   }
 
   //music effect 
   if(currentTime>136 && currentTime<187){
     spotlight(4);
+    showman.style.display = "none";
+    imageContainer.style.opacity = "1";
     //music_effect.style.opacity="0.5";
     //add the music_effect.png image with half opacity across the three instrument images
     //music_effect.style.opacity = "0.5";
@@ -160,8 +168,19 @@ setInterval(function() {
     spotlight(4);
    // music_effect.style.opacity="0";
     imageContainer.style.opacity = "0";
-    imageContainer.style.display="none";
     showman.style.display = "block";
   }
   //guy
 }, 10);
+
+
+
+// showman.style.display = "none";
+// setTimeout(function() {
+//   showman.style.display = "block";
+// }, showmanAppearTime);
+
+// var showmanInterval = setInterval(function() {
+//   showman.style.display = "none";
+//   
+// }, showmanDisappearTime);
