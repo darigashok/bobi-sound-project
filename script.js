@@ -86,7 +86,6 @@ setInterval(function() {
 
   if(currentTime<=5)
   {
-    music_effect.style.opacity="0";
     imageContainer.style.opacity = "0";
     showman.style.display = "none";
   }
@@ -108,7 +107,6 @@ setInterval(function() {
       (currentTime>58 && currentTime<61)||
       (currentTime>72 && currentTime<88) ||
       (currentTime > 128 && currentTime < 131)) {
-    console.log("PIANO THING");
     spotlight(0);
     showman.style.display = "none";
     imageContainer.style.opacity = "1";
@@ -120,7 +118,6 @@ setInterval(function() {
       (currentTime>61 && currentTime<63) ||
       (currentTime>89 && currentTime<102) ||
       (currentTime > 123 && currentTime < 127)) {
-    console.log("DRUMS THING");
     spotlight(1);
     showman.style.display = "none";
     imageContainer.style.opacity = "1";
@@ -131,7 +128,6 @@ setInterval(function() {
       (currentTime>54 && currentTime<57) ||
       (currentTime>63 && currentTime<65) ||
       (currentTime>103 && currentTime<117)) {
-    console.log("GUITAR THING");
     spotlight(2);
     showman.style.display = "none";
     imageContainer.style.opacity = "1";
