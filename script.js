@@ -68,8 +68,7 @@ const imageContainer = document.getElementById('image-container');
 const audio = document.getElementById('audio-player');
 let currentTime = audio.currentTime;
 
-audio.addEventListener('loadedmetadata', function() {
-  audio.play();
+audio.addEventListener('play', function() {
   setInterval(function() {
     currentTime = audio.currentTime;
   }, 1000);
