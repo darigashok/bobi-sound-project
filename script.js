@@ -30,6 +30,14 @@ const imageTimes = [17000, 19000, 21000]; // array of time intervals for switchi
 
 function spotlight(instrumentID) {
 
+  if (instrumentID === 4)
+  {
+    let spotlight = document.getElementById("spotlight1");
+    spotlight.style.opacity = "0";
+    let spotlight2 = document.getElementById("spotlight2");
+    spotlight2.style.opacity = "0";
+  }
+  else {
     showman.style.display = "none";
     imageContainer.style.opacity = "1";
 
@@ -37,6 +45,7 @@ function spotlight(instrumentID) {
 
   // call the setupSpotlight function for the vertical spotlight
   setupSpotlight("spotlight2", instrumentID);
+}
 }
 
 function setupSpotlight(spotlightId, instrumentID) {
@@ -112,7 +121,8 @@ setInterval(function() {
       (currentTime>31 && currentTime<36) ||
       (currentTime>46 && currentTime<51) ||
       (currentTime>58 && currentTime<61)||
-      (currentTime>72 && currentTime<88)) {
+      (currentTime>72 && currentTime<88) ||
+      (currentTime > 128 && currentTime < 131)) {
     console.log("PIANO THING");
     spotlight(0);
   }
@@ -121,7 +131,8 @@ setInterval(function() {
       (currentTime>37 && currentTime<40) ||
       (currentTime>51 && currentTime<54) ||
       (currentTime>61 && currentTime<63) ||
-      (currentTime>89 && currentTime<102)) {
+      (currentTime>89 && currentTime<102) ||
+      (currentTime > 123 && currentTime < 127)) {
     console.log("DRUMS THING");
     spotlight(1);
   }
@@ -137,31 +148,20 @@ setInterval(function() {
 
   //music effect 
   if(currentTime>136 && currentTime<187){
-    music_effect.style.opacity="0.5";
+    spotlight(4);
+    //music_effect.style.opacity="0.5";
     //add the music_effect.png image with half opacity across the three instrument images
-    music_effect.style.opacity = "0.5";
-    music_effect.style.display="block";
+    //music_effect.style.opacity = "0.5";
+    //music_effect.style.display="block";
   }
 
   //showman timestamps
   if (currentTime>197){
-    spotlight(1)
-    music_effect.style.opacity="0";
+    spotlight(4);
+   // music_effect.style.opacity="0";
     imageContainer.style.opacity = "0";
-    imageContainer.style.display="none"
+    imageContainer.style.display="none";
     showman.style.display = "block";
   }
   //guy
 }, 10);
-
-
-
-// showman.style.display = "none";
-// setTimeout(function() {
-//   showman.style.display = "block";
-// }, showmanAppearTime);
-
-// var showmanInterval = setInterval(function() {
-//   showman.style.display = "none";
-//   
-// }, showmanDisappearTime);
