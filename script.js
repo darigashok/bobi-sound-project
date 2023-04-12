@@ -81,29 +81,33 @@ const imageContainer = document.getElementById('image-container');
 //var for music_effect
 const music_effect = document.getElementById('music_effect');
 
-// get the audio element
-    const audio = new Howl({
-      src: ['sounds/sound.mp3'],
-      autoplay: false,
-      html5: true,
-      onplay: function() {
-        setInterval(function() {
-          currentTime = audio.seek();
-        }, 1000);
-      },
-      onseek: function() {
-        currentTime = audio.seek();
-      }
-    });
 
-    let currentTime = 0;
-    
+const audio = new Howl({
+  src: ['sounds/sound.mp3'],
+  autoplay: false,
+  html5: true,
+  onplay: function() {
     setInterval(function() {
-      currentTime += 0.5;
+      currentTime = audio.seek();
     }, 1000);
+    audioStarted = true; // set audioStarted flag to true when the audio starts playing
+  },
+  onseek: function() {
+    currentTime = audio.seek();
+  }
+});
 
-    //use currentTime for timestamps
-    setInterval(function() {
+let currentTime = 0;
+let audioStarted = false; // set audioStarted flag to false initially
+
+setInterval(function() {
+  currentTime += 0.5;
+}, 1000);
+
+//use currentTime for timestamps
+setInterval(function() {
+  // only show images if audio has started playing
+  if (audioStarted) {
       //piano timestamps
 
       if(currentTime<=5)
@@ -168,15 +172,9 @@ const music_effect = document.getElementById('music_effect');
         imageContainer.style.opacity = "0";
         showman.style.display = "block";
       }
-    }, 10);
+    }
+}, 10);
 
-    const playButton = document.getElementById('play-button');
-    const pauseButton = document.getElementById('pause-button');
-
-    playButton.addEventListener('click', function() {
-      audio.play();
-    });
-
-    pauseButton.addEventListener('click', function() {
-      audio.pause();
-    });
+sound.on('end', function() {
+  sound.unload();
+});
