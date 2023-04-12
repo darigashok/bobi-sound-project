@@ -154,10 +154,11 @@ audio {
   left: 0;
   background-color: transparent;
   color: transparent;
-  padding: 10px;
+  /* padding: 10px; */
   height: 7vh;
   box-sizing: border-box;
   font-size: 14px;
+  z-index: 1;
 }
 audio::-webkit-media-controls-panel {
   background-color: transparent;

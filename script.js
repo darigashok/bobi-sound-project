@@ -23,6 +23,13 @@
 */
 
 
+
+
+
+
+//////////////////////////////////////////
+
+
 function jumpAnimation(element) {
   element.classList.add('is-jumping'); // Add the 'is-jumping' class to trigger the jump animation
   setTimeout(() => {
@@ -81,33 +88,65 @@ const imageContainer = document.getElementById('image-container');
 //var for music_effect
 const music_effect = document.getElementById('music_effect');
 
-
-const audio = new Howl({
-  src: ['sounds/sound.mp3'],
-  autoplay: false,
-  html5: true,
-  onplay: function() {
-    setInterval(function() {
-      currentTime = audio.seek();
-    }, 1000);
-    audioStarted = true; // set audioStarted flag to true when the audio starts playing
-  },
-  onseek: function() {
-    currentTime = audio.seek();
-  }
-});
-
-let currentTime = 0;
 let audioStarted = false; // set audioStarted flag to false initially
+let currentTime=0;
 
-setInterval(function() {
-  currentTime += 0.5;
+setInterval(function () {
+  var audio = document.getElementById('audio-player');
+  currentTime=parseInt( audio.currentTime );
+  console.log("audio", parseInt( audio.currentTime ));
 }, 1000);
+
+//play audio
+// const audio = new Howl({
+//   src: ['sounds/sound.mp3'],
+//   html5: true,
+//   onplay: function() {
+//     audioStarted = true; // set audioStarted flag to true when audio starts playing
+//   },
+//   onend: function() {
+//     audioStarted = false; // set audioStarted flag to false when audio ends
+//   }
+// });
+
+// //play audio
+// function playAudio() {
+//   audio.play();
+// }
+
+// //pause audio
+// function pauseAudio() {
+//   audio.pause();
+// }
+
+// //stop audio
+// function stopAudio() {
+
+//   audio.stop();
+//   audioStarted = false;
+// }
+
+
+
+// //print current playing time of the audio every second
+// let currentTime = 0;
+// // let time = 0;
+// setInterval(function() {  
+//   if (audioStarted) {
+//     currentTime = audio.seek();
+//     // time = audio.seek();
+//     // console.log(time);
+//     console.log(currentTime);
+//   }
+// }, 1000);
+
+
+
 
 //use currentTime for timestamps
 setInterval(function() {
   // only show images if audio has started playing
-  if (audioStarted) {
+ //if (audioStarted) {
       //piano timestamps
 
       if(currentTime<=5)
@@ -172,9 +211,24 @@ setInterval(function() {
         imageContainer.style.opacity = "0";
         showman.style.display = "block";
       }
-    }
+    
 }, 10);
 
-sound.on('end', function() {
-  sound.unload();
-});
+
+// // Pause the audio if spacebar is pressed
+// document.addEventListener('keydown', function(event) {
+//   if (event.keyCode === 32) {
+//     audio.pause();
+//   }
+// });
+
+
+// //turn audio on
+// function playAudio() {
+//   audio.play();
+// }
+
+
+// audio.on('end', function() {
+//   audio.unload();
+// });
