@@ -1,4 +1,4 @@
-/* Default background image */
+/* Default background image - desktop background */
 body {
   background-image: url('img/scene.png');
   background-size: cover;
@@ -23,15 +23,16 @@ body {
     opacity: 0.8;
   }
 
+/* Animation class for all instruments - piano, drums, and guitar*/
 .animation {
   transition: transform 0.3s ease-in-out;
 }
 
 .animation:hover{
-  animation: shake 1.2s ease-in-out infinite; /*0.8s*/
+  animation: shake 1.2s ease-in-out infinite; /* upon hover, shake keyframes are called*/
 }
-
-@keyframes shake {
+/* shake animation settings in hover effect*/
+@keyframes shake { 
   0% { transform: translate(1px, 1px) rotate(0deg); }
   10% { transform: translate(-1px, -2px) rotate(-1deg); }
   20% { transform: translate(-3px, 0px) rotate(1deg); }
@@ -45,6 +46,7 @@ body {
   100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 
+/* jump animation upon click*/
 .animation:active {
   animation-name: jump;
   animation-duration: 1.2s;
@@ -52,6 +54,7 @@ body {
   transform: translateY(-2vh);
 }
 
+/* jump animation settings in click effect*/
 @keyframes jump {
   from {
     transform: translateY(0);
@@ -71,15 +74,17 @@ body {
   margin-bottom: 10vh;
 }
 
+/* For desktop screens, mobile spotlight is not displayed*/
 #spotlight2{
   display: none;
 }
 
+/* Default desktop-style spotlight*/
 #spotlight1 {
   display: block;
 }
 
-/* Media query for screens smaller than 768px */
+/* Media query for screens bigger than 768px and smaller than 1200 px*/
 @media (max-width: 1200px) {
   body {
     background-image: url('img/scene_tablet.png');
@@ -88,6 +93,7 @@ body {
   }
 }
 
+/* Media query for screens smaller than 768px*/
 @media (max-width: 767px)
 {
   body {
@@ -129,7 +135,7 @@ body {
     left: 0;
     width: 35%;
     height: 100%;
-    z-index: 0.9;
+    z-index: 0.9; /* set z-index to smaller value than z-index of image instruments to place it behind*/
     opacity: 0;
     transition: all 1s;
   pointer-events: none;
@@ -147,6 +153,7 @@ body {
  pointer-events: none;
 }
 
+/* audio player styling*/
 audio {
   width: 100%;
   position: fixed;
@@ -154,7 +161,6 @@ audio {
   left: 0;
   background-color: transparent;
   color: transparent;
-  /* padding: 10px; */
   height: 7vh;
   box-sizing: border-box;
   font-size: 14px;

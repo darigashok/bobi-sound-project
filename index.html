@@ -3,22 +3,25 @@
   <head>
     <title>Battle of the Band Instruments</title>
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css"> <!-- Please refer to styles.css to view CSS code for the project-->
   </head>
   <body>
-    <audio controls id="audio-player">
-      <source src="sounds/sound.mp3" type="audio/mpeg"> 
+    <!-- The project uses HTML built-in audio player with its controls (play, pause, etc.)-->
+    <audio controls id="audio-player"> 
+      <source src="sounds/sound.mp3" type="audio/mpeg"> <!-- Please refer to sounds/sound.mp3 to access the original audio file used -->
     </audio>
-
-    <div id="showman" class = "showman-container"><img src="img/showman.png"></div>
+    <!-- Div container to control the showman image-->
+    <div id="showman" class = "showman-container"><img src="img/showman.png"></div> 
+    <!-- Here, spotlight1 refers to desktop-style spotlight and spotlight2 refers to mobile-style spotlight -->
     <img id="spotlight1" class="spotlight" src="img/spotlight.png" alt="Scene Spotlight"/>
     <img id="spotlight2" class="spotlight" src="img/spotlight_mobile.png" alt=" Circle Spotlight"/>
+    <!-- Div container with 3 instruments' images with their unified animations defined in CSS-->
     <div id = "image-container" class="image-container">
       <img src="img/piano.png" id="piano" alt="Piano" class = "animation">
       <img src="img/drum.png" id="drums" alt="Drums" class = "animation">
       <img src="img/guitar.png" id="guitar" alt="Guitar" class = "animation">
     </div>
+    <!-- Please refer to script.js to view JS code for the project-->
     <script src="script.js"></script>
   </body>
 </html>

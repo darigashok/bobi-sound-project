@@ -1,5 +1,6 @@
 /*
-
+The base time stamps used for the connection between visual representation of the scene and audio file. 
+Please see the JS main code for the exact final times used.
 26 - 31 - audience applause
 31 - 36 - piano intro
 37 - 40 - drums intro 
@@ -22,39 +23,32 @@
 198 - 215 - host talk
 */
 
-
-
-
-
-
 //////////////////////////////////////////
 
-
-function jumpAnimation(element) {
-  element.classList.add('is-jumping'); // Add the 'is-jumping' class to trigger the jump animation
-  setTimeout(() => {
-    element.classList.remove('is-jumping'); // Remove the 'is-jumping' class after the animation completes
-  }, 200); // Adjust the timeout duration to match the duration of the transition property in CSS
-}
-
-
 function spotlight(instrumentID) {
-
+ /* In case -1 is passed as an argument, we set the opacity of both desktop-style and mobile spotlights to 0,
+- make them invisible*/
+// Instument IDs for the placement of spotlight on instruments:
+// -1 - No instrument
+// 1 - Piano
+// 2 - Drums
+// 3 - Guitar
   if (instrumentID === -1)
   {
-    let spotlight = document.getElementById("spotlight1");
+    // to access the opacity of desktop spotlight, it is retrieved from HTML code using ID "spotlight1"
+    let spotlight = document.getElementById("spotlight1"); 
     spotlight.style.opacity = "0";
+    // to access the opacity of spotlight, it is retrieved from HTML code using ID "spotlight2"
     let spotlight2 = document.getElementById("spotlight2");
     spotlight2.style.opacity = "0";
   }
   else {
-    showman.style.display = "none";
-    imageContainer.style.opacity = "1";
-
-  setupSpotlight("spotlight1", instrumentID);
-
-  // call the setupSpotlight function for the vertical spotlight
-  setupSpotlight("spotlight2", instrumentID);
+    showman.style.display = "none"; // make showman image disappear
+    imageContainer.style.opacity = "1"; // make all instruments visible
+    // call the setupSpotlight function for the desktop spotlight 
+    setupSpotlight("spotlight1", instrumentID);
+    // call the setupSpotlight function for the mobile spotlight
+    setupSpotlight("spotlight2", instrumentID);
 }
 }
 
@@ -62,93 +56,42 @@ function setupSpotlight(spotlightId, instrumentID) {
   let spotlight = document.getElementById(spotlightId); // define spotlight variable here
 
   let spotlightPositions;
-  if (spotlightId === "spotlight1") {
-    spotlightPositions = [13, 34, 56];
+  if (spotlightId === "spotlight1") { // initialize spotlight positions array for desktop-style spotlight
+    spotlightPositions = [13, 34, 56]; // pre-defined positions for the spotlight (in vw) according to the positions of instruments
   } else {
-    spotlightPositions = [18, 39, 61];
+    spotlightPositions = [18, 39, 61]; // pre-defined positions for the spotlight (in vw) according to the positions of instruments
   }
-
+// move the position of spotlight to the correct position
   spotlight.style.transform =
     "translate" +
-    (spotlightId === "spotlight1" ? "X" : "Y") +
+    (spotlightId === "spotlight1" ? "X" : "Y") + // if desktop-style, move across X, alternatively, Y
     "(" +
     spotlightPositions[instrumentID] +
-    (spotlightId === "spotlight1" ? "vw)" : "vh)");
+    (spotlightId === "spotlight1" ? "vw)" : "vh)"); // if desktop-style, move by vw (viewport width), alternatively, viewport height
 
-  spotlight.style.opacity = "1";
+  spotlight.style.opacity = "1"; // make spotlight visible
 }
 
+const showman = document.getElementById('showman'); // access showman image accessed by 'showman' ID defined in HTML file
+const imageContainer = document.getElementById('image-container');// access instrument images in div with 'image-container' ID defined in HTML file
 
-const imagePiano = document.getElementById('piano');
-const imageDrums = document.getElementById('drums');
-const imageGuitar = document.getElementById('guitar');
-
-const showman = document.getElementById('showman');
-const imageContainer = document.getElementById('image-container');
-//var for music_effect
-const music_effect = document.getElementById('music_effect');
-
-let audioStarted = false; // set audioStarted flag to false initially
-let currentTime=0;
+let currentTime=0; // initialize current time to 0
 
 setInterval(function () {
-  var audio = document.getElementById('audio-player');
+  var audio = document.getElementById('audio-player'); // access HTML audio player
   currentTime=parseInt( audio.currentTime );
-  console.log("audio", parseInt( audio.currentTime ));
 }, 1000);
-
-//play audio
-// const audio = new Howl({
-//   src: ['sounds/sound.mp3'],
-//   html5: true,
-//   onplay: function() {
-//     audioStarted = true; // set audioStarted flag to true when audio starts playing
-//   },
-//   onend: function() {
-//     audioStarted = false; // set audioStarted flag to false when audio ends
-//   }
-// });
-
-// //play audio
-// function playAudio() {
-//   audio.play();
-// }
-
-// //pause audio
-// function pauseAudio() {
-//   audio.pause();
-// }
-
-// //stop audio
-// function stopAudio() {
-
-//   audio.stop();
-//   audioStarted = false;
-// }
-
-
-
-// //print current playing time of the audio every second
-// let currentTime = 0;
-// // let time = 0;
-// setInterval(function() {  
-//   if (audioStarted) {
-//     currentTime = audio.seek();
-//     // time = audio.seek();
-//     // console.log(time);
-//     console.log(currentTime);
-//   }
-// }, 1000);
-
-
-
 
 //use currentTime for timestamps
 setInterval(function() {
-  // only show images if audio has started playing
- //if (audioStarted) {
       //piano timestamps
+// For all the code below, 
+// set display to 'none'/ set opacity to "0" -> make the object invisible
+// set display to 'block'/ set opacity to "1" -> make the object appear on screen
 
+// conditions like (currentTime>16 && currentTime<17) -> if currentTime is in interval [16,17]
+// Time stamps for every instruments are unified using OR || operator to make the code inside IF condition execute
+// whenever currentTime falls into one of the intervals defined
       if(currentTime<=5)
       {
         imageContainer.style.opacity = "0";
@@ -212,23 +155,4 @@ setInterval(function() {
         showman.style.display = "block";
       }
     
-}, 10);
-
-
-// // Pause the audio if spacebar is pressed
-// document.addEventListener('keydown', function(event) {
-//   if (event.keyCode === 32) {
-//     audio.pause();
-//   }
-// });
-
-
-// //turn audio on
-// function playAudio() {
-//   audio.play();
-// }
-
-
-// audio.on('end', function() {
-//   audio.unload();
-// });
+}, 10); // update currentTime reading every 10 milliseconds
